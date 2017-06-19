@@ -25,7 +25,6 @@ class CacheService {
   isCached(item) {
     const self = this;
     return find(self.localCollection, (fav) => {
-      console.log(fav.name, item.name);
       return fav.name === item.name;
     })
   }

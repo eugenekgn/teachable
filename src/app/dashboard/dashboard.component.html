@@ -5,13 +5,19 @@
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Search for..." ng-model="model.searchTerm">
           <span class="input-group-btn">
-        <button class="btn btn-default" type="button"
+            <button class="btn btn-default" type="button"
+                    ng-click="model.clearSearch()"> Clear
+                    
+            </button>
+            <button class="btn btn-default" type="button"
                 ng-click="model.findGems()"
                 ng-disabled="model.isSearchDisabled()">Search</button>
-      </span>
+            </span>
         </div>
-
-        <table class="table">
+        <span ng-if="model.isLoading">Searching ... </span>
+        <br/>
+        <br/>
+        <table class="table" ng-if="model.gemsCollection.length > 0">
           <tr>
             <th>Name:</th>
             <th>Info</th>
@@ -25,11 +31,9 @@
             <td>{{gem.authors}}</td>
             <td>{{gem.downloads | number}}</td>
             <td>
-              <button class="btn btn-default" 
-              ng-disabled="model.isFavored(gem)"
-              ng-click="model.favoriteGem(gem)">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
+              <button class="btn btn-default" ng-disabled="model.isFavored(gem)" ng-click="model.favoriteGem(gem)">
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
             </td>
           </tr>
         </table>

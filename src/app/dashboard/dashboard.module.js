@@ -1,14 +1,10 @@
 import angular from 'angular';
 
 import dashboard from './dashboard.component';
-import favorites from './favorites/favorites.component';
 import dashboardService  from './dashboard.service';
-import cacheService from '../shared/cache.service';
+import shared from '../shared/shared.module';
 
-
-export default angular.module('dashboard', [])
+export default angular.module('dashboard', ['shared'])
   .component('dashboard', dashboard)
-  .component('favorites', favorites)
   .service('DashboardService', dashboardService)
-  .service('CacheService', cacheService)
   .name;

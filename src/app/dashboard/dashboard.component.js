@@ -8,7 +8,7 @@ class DashboardController {
     this.gemsCollection = [];
     this.cachService = CacheService;
     this.favoritesCollection = [];
-    
+
   }
 
   findGems() {
@@ -24,7 +24,10 @@ class DashboardController {
 
   favoriteGem(gem) {
     const model = this;
-    model.cachService.save(gem);
+    model.cachService.save({
+      name: gem.name,
+      downloads: gem.downloads
+    });
   }
 
   isSearchDisabled() {
@@ -43,6 +46,12 @@ class DashboardController {
     const model = this;
     const isCached = model.cachService.isCached(gem);
     return isCached;
+  }
+
+  clearSearch() {
+    const model = this;
+    model.searchTerm = '';
+    model.gemsCollection = [];
   }
 }
 
