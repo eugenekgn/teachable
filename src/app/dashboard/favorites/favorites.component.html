@@ -1,0 +1,24 @@
+<div class="col-md-6 component" ng-if="model.favoritesCollection.length >0">
+  <lalel>
+    Favorites
+  </lalel>
+  <br>
+  <table class="table">
+    <tr>
+      <th>Name:</th>
+      <th>Downloads</th>
+      <td>Remove</td>
+    </tr>
+    <tr ng-repeat="gem in model.favoritesCollection | orderBy : gem.downloads">
+      <td>{{gem.name}}</td>
+      <td>{{gem.downloads |number}}</td>
+
+      </td>
+      <td>
+        <button class="btn btn-default" ng-click="model.remove(gem)">
+                    <span class="glyphicon glyphicon-minus"></span>
+                </button>
+      </td>
+    </tr>
+  </table>
+</div>

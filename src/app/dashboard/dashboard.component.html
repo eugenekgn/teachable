@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-offset-1">
+      <div>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search for..." ng-model="model.searchTerm">
+          <span class="input-group-btn">
+        <button class="btn btn-default" type="button"
+                ng-click="model.findGems()"
+                ng-disabled="model.isSearchDisabled()">Search</button>
+      </span>
+        </div>
+
+        <table class="table">
+          <tr>
+            <th>Name:</th>
+            <th>Info</th>
+            <th>Author</th>
+            <th>Downloads</th>
+            <td>Action</td>
+          </tr>
+          <tr ng-repeat="gem in model.gemsCollection">
+            <td>{{gem.name}}</td>
+            <td>{{model.truncate(gem.info)}}</td>
+            <td>{{gem.authors}}</td>
+            <td>{{gem.downloads | number}}</td>
+            <td>
+              <button class="btn btn-default" 
+              ng-disabled="model.isFavored(gem)"
+              ng-click="model.favoriteGem(gem)">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <favorites></favorites>
+  </div>
+</div>
